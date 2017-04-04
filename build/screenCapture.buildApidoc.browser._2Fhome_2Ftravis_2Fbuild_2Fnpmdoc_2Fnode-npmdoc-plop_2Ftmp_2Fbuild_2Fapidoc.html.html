@@ -1,0 +1,194 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/amwmedia/plop">plop (v1.7.4)</a>
+</h1>
+<h4>Micro-generator framework that makes it easy for an entire team to create files with a level of uniformity</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.plop">module plop</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">plop.</span>console_out</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.plop.console_out">module plop.console_out</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.plop.console_out.chooseOptionFromList">
+            function <span class="apidocSignatureSpan">plop.console_out.</span>chooseOptionFromList
+            <span class="apidocSignatureSpan">(plopList)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.plop.console_out.createInitPlopfile">
+            function <span class="apidocSignatureSpan">plop.console_out.</span>createInitPlopfile
+            <span class="apidocSignatureSpan">(cwd, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.plop.console_out.displayHelpScreen">
+            function <span class="apidocSignatureSpan">plop.console_out.</span>displayHelpScreen
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.plop" id="apidoc.module.plop">module plop</a></h1>
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.plop.console_out" id="apidoc.module.plop.console_out">module plop.console_out</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.plop.console_out.chooseOptionFromList" id="apidoc.element.plop.console_out.chooseOptionFromList">
+        function <span class="apidocSignatureSpan">plop.console_out.</span>chooseOptionFromList
+        <span class="apidocSignatureSpan">(plopList)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function chooseOptionFromList(plopList) {
+		const plop = nodePlop();
+		const generator = plop.setGenerator('choose', {
+			prompts: [{
+				type: 'list',
+				name: 'generator',
+				message: '[PLOP]'.blue + ' Please choose a generator.',
+				choices: plopList.map(function (p) {
+					return {
+						name: p.name + chalk.gray(!!p.description ? ' - ' + p.description : ''),
+						value: p.name
+					};
+				})
+			}]
+		});
+		return generator.runPrompts().then(results =&gt; results.generator);
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.plop.console_out.createInitPlopfile" id="apidoc.element.plop.console_out.createInitPlopfile">
+        function <span class="apidocSignatureSpan">plop.console_out.</span>createInitPlopfile
+        <span class="apidocSignatureSpan">(cwd, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createInitPlopfile(cwd, callback){
+		var initString = 'module.exports = function (plop) {\n\n' +
+			'\tplop.setGenerator(\'basics\', {\n' +
+			'\t\tdescription: \'this is a skeleton plopfile\',\n' +
+			'\t\tprompts: [],\n' +
+			'\t\tactions: []\n' +
+			'\t});\n\n' +
+			'};';
+
+		fs.writeFile(cwd + '/plopfile.js', initString, callback);
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.plop.console_out.displayHelpScreen" id="apidoc.element.plop.console_out.displayHelpScreen">
+        function <span class="apidocSignatureSpan">plop.console_out.</span>displayHelpScreen
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function displayHelpScreen() {
+		console.log(
+			'\n' +
+			'USAGE:\n' +
+			'  $ plop\t\tSelect from a list of available generators\n' +
+			'  $ plop &lt;name&gt;\t\tRun a generator registered under that name\n' +
+
+			'\n' +
+			'OPTIONS:\n' +
+			'  -h, --help\t\tShow this help display\n' +
+			'  -i, --init\t\tGenerate a basic plopfile.js\n' +
+			'  -v, --version\t\tPrint current version\n'
+		);
+	}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
