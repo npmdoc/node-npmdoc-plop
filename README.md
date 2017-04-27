@@ -1,6 +1,6 @@
 # npmdoc-plop
 
-#### api documentation for  [plop (v1.7.4)](https://github.com/amwmedia/plop)  [![npm package](https://img.shields.io/npm/v/npmdoc-plop.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-plop) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-plop.svg)](https://travis-ci.org/npmdoc/node-npmdoc-plop)
+#### basic api documentation for  [plop (v1.7.4)](https://github.com/amwmedia/plop)  [![npm package](https://img.shields.io/npm/v/npmdoc-plop.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-plop) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-plop.svg)](https://travis-ci.org/npmdoc/node-npmdoc-plop)
 
 #### Micro-generator framework that makes it easy for an entire team to create files with a level of uniformity
 
