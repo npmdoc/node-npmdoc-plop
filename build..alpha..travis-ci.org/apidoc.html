@@ -137,7 +137,24 @@
 		});
 		return generator.runPrompts().then(results =&#x3e; results.generator);
 	}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+		process.exit(1);
+	}
+
+	// set the default base path to the plopfile directory
+	plop = nodePlop(plopfilePath);
+	generators = plop.getGeneratorList();
+	if (!generator) {
+		out.<span class="apidocCodeKeywordSpan">chooseOptionFromList</span>(generators).then(function (generatorName) {
+			doThePlop(plop.getGenerator(generatorName));
+		});
+	} else if (generators.map(function (v) { return v.name; }).indexOf(generator) &#x3e; -1) {
+		doThePlop(plop.getGenerator(generator));
+	} else {
+		console.error(chalk.red(&#x27;[PLOP] &#x27;) + &#x27;Generator &#x22;&#x27; + generator + &#x27;&#x22; not found in plopfile&#
+x27;);
+		process.exit(1);
+...</pre></li>
     </ul>
 
 
@@ -160,7 +177,23 @@
 
 		fs.writeFile(cwd + &#x27;/plopfile.js&#x27;, initString, callback);
 	}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+	if (argv.help || argv.h) {
+		out.displayHelpScreen();
+		process.exit(0);
+	}
+
+	// handle request for initializing a new plopfile
+	if (argv.init || argv.i) {
+		return out.<span class="apidocCodeKeywordSpan">createInitPlopfile</span>(env.cwd, function(err){
+			if (err){
+				console.log(err);
+				process.exit(1);
+			}
+			process.exit(0);
+		});
+	}
+...</pre></li>
     </ul>
 
 
@@ -186,7 +219,23 @@
 			&#x27;  -v, --version\t\tPrint current version\n&#x27;
 		);
 	}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}, run);
+
+function run(env) {
+	var generators, plopfilePath, plop;
+
+	// handle request for usage and options
+	if (argv.help || argv.h) {
+		out.<span class="apidocCodeKeywordSpan">displayHelpScreen</span>();
+		process.exit(0);
+	}
+
+	// handle request for initializing a new plopfile
+	if (argv.init || argv.i) {
+		return out.createInitPlopfile(env.cwd, function(err){
+			if (err){
+...</pre></li>
     </ul>
 
 
